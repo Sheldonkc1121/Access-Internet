@@ -1,0 +1,79 @@
+### Libraries ###
+import time
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import warnings
+warnings.simplefilter("ignore")
+
+
+# Running Firefox driver and launching webpage
+driver = webdriver.Firefox(executable_path = ".../geckodriver.exe")
+driver.get("https://messages.google.com/web")
+
+
+# # Use one of the follow element finders
+# element = driver.find_element(By.ID, "passwd-id")
+# element = driver.find_element(By.NAME, "passwd")
+# element = driver.find_element(By.XPATH, "//input[@id='passwd-id']")
+# element = driver.find_element(By.CSS_SELECTOR, "input#passwd-id")
+
+
+
+# # Testing on myself
+# number = ("1112223333")
+# msg = ("Test")
+
+# # Start chat button
+# Start_chat = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-main-nav/div/mw-fab-link/a")
+# Start_chat.click()
+
+# # Name search box
+# Search_box = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div[2]/mw-contact-chips-input/div/div/input")
+# Search_box.click()
+
+# # Enter name
+# Search_box.send_keys(number)
+
+# # Loading time sleep
+# time.sleep(3)
+
+# # Select top option
+# Search_box.send_keys(Keys.ENTER)
+
+# # Loading time sleep
+# time.sleep(3)
+
+# # Type and send message
+# Message_box = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-conversation-container/div/div[1]/div/mws-message-compose/div/div[2]/div/div/mws-autosize-textarea/textarea")
+# Message_box.send_keys(msg)
+# Message_box.send_keys(Keys.ENTER)
+
+
+
+# Numbers
+Person1 = ("0123456789")
+Person2 = ("1234567890")
+
+
+
+list = [Person1, 
+        Person2]
+
+msg = ("Hello there! \ue008\ue007\ue008This is a new line")
+
+# Sending message
+for i in range(len(list)):
+    Start_chat = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-main-nav/div/mw-fab-link/a")
+    Start_chat.click()
+    Search_box = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-new-conversation-container/mw-new-conversation-sub-header/div/div[2]/mw-contact-chips-input/div/div/input")
+    Search_box.click()
+    Search_box.send_keys(list[i])
+    time.sleep(3)
+    Search_box.send_keys(Keys.ENTER)
+    time.sleep(3)
+    Message_box = driver.find_element(By.XPATH, "/html/body/mw-app/mw-bootstrap/div/main/mw-main-container/div/mw-conversation-container/div/div[1]/div/mws-message-compose/div/div[2]/div/div/mws-autosize-textarea/textarea")
+    Message_box.send_keys(msg)
+    Message_box.send_keys(Keys.ENTER)
+
+print("Advanced Messaging Program complete!")
